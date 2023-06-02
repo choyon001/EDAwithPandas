@@ -22,3 +22,10 @@ dataset = pd.read_csv('Output.csv')
 dataset = dataset[dataset['Order Date'].str[:2] !='Or']
 dataset.dropna(how='all',inplace =True)
 
+#creating a new col named Month
+dataset['Month'] = dataset['Order Date'].str[:2]
+
+# creating a new col named Sales
+dataset['Quantity Ordered'] = pd.to_numeric(dataset['Quantity Ordered'])
+dataset['Price Each'] = pd.to_numeric(dataset['Price Each'])
+dataset['Sales']=dataset['Quantity Ordered'] * dataset['Price Each']
