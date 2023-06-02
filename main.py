@@ -35,7 +35,7 @@ dataset['Sales']=dataset['Quantity Ordered'] * dataset['Price Each']
 # Find out which month is best for sales
 
 best_month = dataset.groupby('Month')['Sales'].sum().sort_values(ascending=False).index[0]
-print(best_month)
+print('Best Month For Selling Product:',best_month)
 
 # creating a new column named City which is basically splitted from another column
 
@@ -43,4 +43,11 @@ dataset['City'] = dataset['Purchase Address'].str.split(',').str[1]
 
 # find out which city sold most product
 best_city = dataset.groupby('City')['Sales'].sum().sort_values(ascending=False).index[0]
-print(best_city)
+print('Best City For Selling Product:',best_city)
+
+# which time is best for selling?
+# creating a new column named Time
+dataset['Time']=dataset['Order Date'].str[-5:-3]
+# found the best time for selling product
+best_time = dataset.groupby('Time')['Sales'].sum().sort_values(ascending=False).index[0]
+print('Best Time For Selling Product:',best_time)
