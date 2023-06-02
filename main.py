@@ -12,7 +12,7 @@ for file in files:
 
 # make a new csv file
 
-# dataset.to_csv('Output.csv')
+dataset.to_csv('Output.csv',index=False)
 
 # open the new csv dataset
 dataset = pd.read_csv('Output.csv')
@@ -29,3 +29,4 @@ dataset['Month'] = dataset['Order Date'].str[:2]
 dataset['Quantity Ordered'] = pd.to_numeric(dataset['Quantity Ordered'])
 dataset['Price Each'] = pd.to_numeric(dataset['Price Each'])
 dataset['Sales']=dataset['Quantity Ordered'] * dataset['Price Each']
+print(dataset.isnull().sum())
