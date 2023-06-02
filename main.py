@@ -51,3 +51,8 @@ dataset['Time']=dataset['Order Date'].str[-5:-3]
 # found the best time for selling product
 best_time = dataset.groupby('Time')['Sales'].sum().sort_values(ascending=False).index[0]
 print('Best Time For Selling Product:',best_time)
+
+
+# which product sold the most
+most_sold = dataset.groupby('Product')['Quantity Ordered'].sum().sort_values(ascending = False).index[0]
+print('Most sold Product: '+most_sold)
