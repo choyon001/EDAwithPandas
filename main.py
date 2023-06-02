@@ -29,4 +29,10 @@ dataset['Month'] = dataset['Order Date'].str[:2]
 dataset['Quantity Ordered'] = pd.to_numeric(dataset['Quantity Ordered'])
 dataset['Price Each'] = pd.to_numeric(dataset['Price Each'])
 dataset['Sales']=dataset['Quantity Ordered'] * dataset['Price Each']
-print(dataset.isnull().sum())
+# print(dataset.isnull().sum())
+
+# finding out the first question
+# Find out which month is best for sales
+
+best_month = dataset.groupby('Month')['Sales'].sum().sort_values(ascending=False).index[0]
+print(best_month)
