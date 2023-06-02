@@ -36,3 +36,11 @@ dataset['Sales']=dataset['Quantity Ordered'] * dataset['Price Each']
 
 best_month = dataset.groupby('Month')['Sales'].sum().sort_values(ascending=False).index[0]
 print(best_month)
+
+# creating a new column named City which is basically splitted from another column
+
+dataset['City'] = dataset['Purchase Address'].str.split(',').str[1]
+
+# find out which city sold most product
+best_city = dataset.groupby('City')['Sales'].sum().sort_values(ascending=False).index[0]
+print(best_city)
