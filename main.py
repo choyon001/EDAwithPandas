@@ -12,4 +12,13 @@ for file in files:
 
 # make a new csv file
 
-dataset.to_csv('Output.csv')
+# dataset.to_csv('Output.csv')
+
+# open the new csv dataset
+dataset = pd.read_csv('Output.csv')
+
+# deleting all the nan values from the dataset
+
+dataset = dataset[dataset['Order Date'].str[:2] !='Or']
+dataset.dropna(how='all',inplace =True)
+
